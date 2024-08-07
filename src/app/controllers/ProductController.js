@@ -65,7 +65,7 @@ class productController {
  
     const { id } = request.params;
 
-    const findProduct = await product.findByPk(id);
+    const findProduct = await Product.findByPk(id);
 
     if(findProduct) {
       return response

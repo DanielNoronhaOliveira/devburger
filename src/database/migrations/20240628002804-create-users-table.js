@@ -25,7 +25,7 @@ module.exports = {
     },
     admin: {
       type: Sequelize.BOOLEAN,
-      defaultValue: false,
+      defaultValue: false,//true, 
     },
     created_at: {
       type: Sequelize.DATE,

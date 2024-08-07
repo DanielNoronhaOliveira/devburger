@@ -5,11 +5,11 @@ import mongoose from "mongoose";
 const OrderSchema = new mongoose.Schema({
         user: {
             id: {
-                type: string,
+                type: String,
                 required: true,
             },
             name: {
-                type: string,
+                type: String,
                 required: true,
             },
         },
@@ -20,7 +20,7 @@ const OrderSchema = new mongoose.Schema({
                       required: true,
                     },
                     name: {
-                        type: string,
+                        type: String,
                         required: true,
                     },
                     price: {
@@ -28,21 +28,21 @@ const OrderSchema = new mongoose.Schema({
                         required: true,
                     },
                     category: {
-                        type: string,
+                        type: String,
                         required: true,
                     },
                     url: {
-                        type: string,
+                        type: String,
                         required: true,
                     },
                     quantity: {
-                        type: string,
+                        type: String,
                         required: true,
                     },
                 },
             ],
             status: {
-                type: string,
+                type: String,
                 required: true,
             },
         },

@@ -1,5 +1,4 @@
 import * as Yup from 'yup'
-import Product from '../models/Category'
 import Category from '../models/Category'
 import User from '../models/User'
 
