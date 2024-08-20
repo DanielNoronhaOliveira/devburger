@@ -34,7 +34,7 @@ class SessionController {
     
     const isSamepassword = await user.checkPassword(password);
 
-    if(isSamepassword){
+    if(!isSamepassword){
       return userEmailOrPasswordIncorrect();
     }
     

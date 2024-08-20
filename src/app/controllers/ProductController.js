@@ -67,7 +67,7 @@ class productController {
 
     const findProduct = await Product.findByPk(id);
 
-    if(findProduct) {
+    if(findProduct) { ////////aqui
       return response
       .status(400)
       .json({ error: 'verifique se o ID do seu produto está correto'})
