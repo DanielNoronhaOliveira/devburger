@@ -41,11 +41,11 @@ class OrderController {
         });
 
         const formattedProducts = findProducts.map((product) => {
-            const productIndex = products.findIndex(item => item.id === product.id)
+            const productIndex = products.findIndex((item) => item.id === product.id)
             const newProduct = {
                 id: product.id,
                 name: product.name,
-                category: product.category.name,
+                category: product.category,
                 price: product.price,
                 url: product.url,
                 quantity: products[productIndex].quantity,
@@ -89,7 +89,7 @@ class OrderController {
 
     const { admin: isAdmin } = await User.findByPk(request.userId);
 
-   if(isAdmin){
+   if(!isAdmin){
     return response.status(401).json();
    }
 

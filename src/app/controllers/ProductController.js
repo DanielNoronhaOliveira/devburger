@@ -8,7 +8,7 @@ class productController {
     const schema = Yup.object({
       name: Yup.string().required(),
       price: Yup.number().required(),
-      category_id: Yup.number().required(),
+      category: Yup.string().required(),
       offer: Yup.boolean(),
     })
 
@@ -22,18 +22,18 @@ class productController {
 
     const { admin: isAdmin } = await User.findByPk(request.userId);
 
-    if(isAdmin){
+    if(!isAdmin){
      return response.status(401).json();
     }
 
 
     const { filename: path } = request.file;
-    const { name, price, category_id, offer } = request.body;
+    const { name, price, category, offer } = request.body;
 
     const product = await Product.create({
       name,
       price,
-      category_id,
+      category,
       path,
       offer,
     });
@@ -42,10 +42,10 @@ class productController {
   }
 
   async update(request, response) {
-    const schema = Yup.object()({
+    const schema = Yup.object({
       name: Yup.string(),
       price: Yup.number(),
-      category_id: Yup.number(),
+      category: Yup.string(),
       offer: Yup.boolean(),
     })
 
@@ -59,7 +59,7 @@ class productController {
 
     const { admin: isAdmin } = await User.findByPk(request.userId);
 
-    if(isAdmin){
+    if(!isAdmin){
      return response.status(401).json();
     }
  
@@ -67,7 +67,7 @@ class productController {
 
     const findProduct = await Product.findByPk(id);
 
-    if(findProduct) { ////////aqui
+    if(!findProduct) { 
       return response
       .status(400)
       .json({ error: 'verifique se o ID do seu produto está correto'})
@@ -78,12 +78,12 @@ class productController {
       path = request.file.filename;
     }
 
-    const { name, price, category_id, offer } = request.body;
+    const { name, price, category, offer } = request.body;
 
      await Product.update({
       name,
       price,
-      category_id,
+      category,
       path,
       offer,
     },
@@ -109,4 +109,4 @@ class productController {
     return response.json(products)
   }
 }
-export default new productController()
+export default new productController

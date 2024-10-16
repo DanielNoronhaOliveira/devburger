@@ -7,7 +7,7 @@ import UserController from './app/controllers/UserController'
 import SessionController from './app/controllers/SessionController'
 import ProductController from './app/controllers/ProductController'
 import CategoryController from './app/controllers/CategoryController'
-
+import CreatePaymentIntentConttroller from './app/controllers/stripe/CreatePaymentIntentController'
 
 
 
@@ -34,6 +34,6 @@ routes.post('/orders', OrderController.store)
 routes.get('/orders', OrderController.index)
 routes.put('/orders/:id', OrderController.update)
 
-
+routes.post('/create-payment-intent', CreatePaymentIntentConttroller.store)
 
 export default routes 

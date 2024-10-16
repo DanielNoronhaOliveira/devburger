@@ -17,7 +17,7 @@ class CategoryController {
 
     const { admin: isAdmin } = await User.findByPk(request.userId);
 
-   if(isAdmin){
+   if(!isAdmin){
     return response.status(401).json();
    }
 
@@ -56,15 +56,16 @@ class CategoryController {
 
     const { admin: isAdmin } = await User.findByPk(request.userId);
 
-   if(isAdmin){
+   if(!isAdmin){
     return response.status(401).json();
    }
 
    const { id } = request.params;
 
+
    const categoryExists = await Category.findByPk(id);
 
-   if(categoryExists) {
+   if(!categoryExists) {
     return response
     .status(400)
     .json({ message: 'Verifique se o ID da sua categoria está correto'});
@@ -76,7 +77,6 @@ class CategoryController {
    }
 
     const { name} = request.body;
-
 
 
    if (name) {
